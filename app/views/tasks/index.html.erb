@@ -1,0 +1,17 @@
+<h1>My Tasks</h1>
+  <% @tasks.each do |task| %>
+    <% done = task.completed ? "[x]" : "[ ]" %>
+    <div class="d-flex">
+      <div class="p-2"> <%="#{done}" %> <%= link_to "#{task.title}", task_path("#{task.id}") %>
+      </div>
+      <div class="p-2">
+       <%= link_to  task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash"></i>
+       <% end %>
+      </div>
+    </div>
+  <% end %>
+<br>
+<%= link_to "+ Add a new task", tasks_new_path  %>
+
+ <i class="fas fa-trash"></i>
